@@ -1,4 +1,36 @@
 var rnd;
+function compare2num(a,b) {
+  var c = a.toString();
+  var d = b.toString();
+  var set = new Set();
+  var set1 = new Set();
+  var sum=0;
+  // console.log(c);
+  // console.log(d);
+  for(var i=0;i<c.length;i++)
+  {
+    // console.log(c[i]);
+    set.add(c[i]);
+    // console.log(d[i]);
+    set1.add(d[i]);
+  }  
+  // console.log(set1);
+  // console.log(set);
+  for(let item of set)
+  {
+    for(let items of set1)
+    {
+    if (item==items){
+      sum++;
+      // console.log(item);
+      // console.log(items);
+      // console.log(sum);
+    }
+  }
+}
+  // localStorage.setItem('digits', sum);
+  return sum;
+}
 function onclickHandler(e) {
   rnd = Math.floor(100000 + Math.random() * 900000);
   document.getElementById('tb').value = rnd;
@@ -28,19 +60,16 @@ function onclickHandler(e) {
 function numberGuess() {
   var temp = document.getElementById('tb2').value;
   let storedRandomNumber = localStorage.getItem('number');
-  var guesses = 5;
-  if (temp === storedRandomNumber) {
-      var s = "Correct Guess!";
-    document.getElementById("Guesses").innerHTML = s;
-    // alert(`Correct Guess!`);
-  } else {
-    // console.log(`Reached inside else block condition`)
-    // guess = document.createTextNode(`${guesses - 1} Correct Guesses!`);
-    // document.write(JSON.stringify(guess));
-    var s = `${guesses - 1} Correct Guesses!`;
-    document.getElementById("Guesses").innerHTML = s;
-    // alert(`${guesses - 1} Correct Guesses!`)
-  }
+  // console.log(storedRandomNumber);
+  // console.log(temp);
+  var guesses=compare2num(temp,storedRandomNumber);
+  // console.log(guesses);
+  // console.log(`Reached inside else block condition`)
+  // guess = document.createTextNode(`${guesses - 1} Correct Guesses!`);
+  // document.write(JSON.stringify(guess));
+  var s = `${guesses} Correct Guesses!`;
+  document.getElementById("Guesses").innerHTML = s;
+  // alert(`${guesses - 1} Correct Guesses!`)
 }
 
 function resetGame() {
