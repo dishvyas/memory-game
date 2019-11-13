@@ -7,7 +7,7 @@ function compare2num(a,b) {
   var sum=0;
   // console.log(c);
   // console.log(d);
-  console.log(d.length);
+  // console.log(d.length);
   for(var i=0;i<c.length;i++)
   {
     // console.log(c[i]);
@@ -61,10 +61,7 @@ function numberGuess() {
   let storedRandomNumber = localStorage.getItem('number');
   // console.log(storedRandomNumber);
   // console.log(temp);
-  if (temp == null)
-  {
-    alert("Please enter a number!")
-  }
+  test_field();
   var guesses=compare2num(temp,storedRandomNumber);
   // console.log(guesses);
   // console.log(`Reached inside else block condition`)
@@ -76,4 +73,16 @@ function numberGuess() {
 
 function resetGame() {
     window.location.href = 'index.html';
+}
+String.prototype.trim = function() {
+  return this.replace(/^\s+|\s+$/g,"");
+}
+
+function test_field(){
+  if(document.getElementById("tb2").value.trim() == ''){
+    alert("Please enter a number!!");
+      document.getElementById("field").style.display ="2";
+  }else{
+    alert("3");
+  }
 }
