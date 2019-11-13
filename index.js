@@ -2,30 +2,28 @@ var rnd;
 function compare2num(a,b) {
   var c = a.toString();
   var d = b.toString();
-  var set = new Set();
-  var set1 = new Set();
+  var set = [];
+  var arr = [];
   var sum=0;
   // console.log(c);
   // console.log(d);
+  console.log(d.length);
   for(var i=0;i<c.length;i++)
   {
     // console.log(c[i]);
-    set.add(c[i]);
+    set.push(c[i]);
     // console.log(d[i]);
-    set1.add(d[i]);
+    arr.push(d[i]);
   }  
   // console.log(set1);
   // console.log(set);
-  for(let item of set)
+  for(var i=0;i<d.length;i++)
   {
-    for(let items of set1)
-    {
-    if (item==items){
+    if (set[i]==arr[i]){
       sum++;
       // console.log(item);
       // console.log(items);
       // console.log(sum);
-    }
   }
 }
   // localStorage.setItem('digits', sum);
@@ -51,6 +49,7 @@ function onclickHandler(e) {
   span = document.getElementById('refresh');
   txt = document.createTextNode('Refreshing the page in 5 seconds....');
   span.appendChild(txt);
+
   setTimeout(function() {
     location.reload(true);
     //   alert("The page will now refresh");
@@ -62,6 +61,10 @@ function numberGuess() {
   let storedRandomNumber = localStorage.getItem('number');
   // console.log(storedRandomNumber);
   // console.log(temp);
+  if (temp == null)
+  {
+    alert("Please enter a number!")
+  }
   var guesses=compare2num(temp,storedRandomNumber);
   // console.log(guesses);
   // console.log(`Reached inside else block condition`)
@@ -69,9 +72,8 @@ function numberGuess() {
   // document.write(JSON.stringify(guess));
   var s = `${guesses} Correct Guesses!`;
   document.getElementById("Guesses").innerHTML = s;
-  // alert(`${guesses - 1} Correct Guesses!`)
 }
 
 function resetGame() {
-    window.location.href = 'guessnumber.html';
+    window.location.href = 'index.html';
 }
