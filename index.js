@@ -59,7 +59,7 @@ function onclickHandler(e) {
 function numberGuess() {
   var temp = document.getElementById('tb2').value;
   let storedRandomNumber = localStorage.getItem('number');
-  // console.log(storedRandomNumber);
+  console.log(storedRandomNumber);
   // console.log(temp);
   test_field();
   var guesses=compare2num(temp,storedRandomNumber);
@@ -81,8 +81,5 @@ String.prototype.trim = function() {
 function test_field(){
   if(document.getElementById("tb2").value.trim() == ''){
     alert("Please enter a number!!");
-      document.getElementById("field").style.display ="2";
-  }else{
-    alert("3");
   }
 }
